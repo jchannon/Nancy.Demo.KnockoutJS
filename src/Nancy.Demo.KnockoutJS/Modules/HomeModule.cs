@@ -14,12 +14,23 @@ namespace Nancy.Demo.KnockoutJS.Modules
         {
             Get["/"] = parameters => View["Index"];
 
-            Get["/tasks"] = parameters => new[] { new { title = "Get Milk", isDone = false }, new { title = "Pick kids up", isDone = true } };
+            Get["/tasks"] = parameters =>
+                                {
+                                    //Get data from database
+                                    var model = new[]
+                                               {
+                                                   new Task {Title = "Get Milk", IsDone = false},
+                                                   new Task {Title = "Pick kids up", IsDone = true}
+                                               };
+
+                                    return model;
+                                };
 
             Post["/tasks"] = parameters =>
                                  {
-                                     
+                                     //Bind posted data
                                      var model = this.Bind<List<Task>>();
+
                                      //Update database
 
                                      return "Saved";

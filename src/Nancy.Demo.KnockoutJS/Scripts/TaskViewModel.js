@@ -38,4 +38,4 @@
 
     ko.applyBindings(new TaskListViewModel());
 
-})();
+})();
