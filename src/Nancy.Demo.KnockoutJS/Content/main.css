@@ -1,0 +1,11 @@
+﻿body { font-family: Helvetica, Arial }
+input:not([type]), input[type=text], input[type=password], select { background-color: #FFFFCC; border: 1px solid gray; padding: 2px; }
+
+.codeRunner{ width: 940px;margin: 0 auto;}
+.codeRunner ul { list-style-type: none; margin: 1em 0; background-color: #cde; padding: 1em; border-radius: 0.5em;  }
+.codeRunner ul li a { color: Gray; font-size: 90%; text-decoration: none }
+.codeRunner ul li a:hover { text-decoration: underline }
+.codeRunner input:not([type]), input[type=text] { width: 30em; }
+.codeRunner input[disabled] { text-decoration: line-through; border-color: Silver; background-color: Silver; }
+.codeRunner textarea { width: 30em; height: 6em; }
+.codeRunner form { margin-top: 1em; margin-bottom: 1em; }

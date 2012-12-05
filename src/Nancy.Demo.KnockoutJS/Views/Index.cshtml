@@ -1,0 +1,44 @@
+﻿﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nancy.Demo.KnockoutJS</title>
+    <meta charset="UTF-8" />
+    <link href='@Url.Content("~/content/main.css")' rel="Stylesheet" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src='@Url.Content("~/Scripts/knockout-2.2.0.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/Scripts/json2.min.js")' type="text/javascript"></script>
+</head>
+    <body>
+        <div class="codeRunner">
+            <h3>Tasks</h3>
+
+            <form data-bind="submit: addTask">
+                Add task: <input data-bind="value: newTaskText" placeholder="What needs to be done?" />
+                <button type="submit">Add</button>
+            </form>
+
+            <ul data-bind="foreach: tasks, visible: tasks().length > 0">
+                <li>
+                    <input type="checkbox" data-bind="checked: isDone" />
+                    <input data-bind="value: title, disable: isDone" />
+                    <a href="#" data-bind="click: $parent.removeTask">Delete</a>
+                </li> 
+            </ul>
+
+            You have <b data-bind="text: incompleteTasks().length">&nbsp;</b> incomplete task(s)
+            <span data-bind="visible: incompleteTasks().length == 0"> - it's beer time!</span>
+
+
+            <button data-bind="click: save">Save</button>
+
+            <form action="/tasks/saveform" method="post">
+                <textarea name="tasks" data-bind="value: ko.toJSON(tasks)"></textarea>
+                <button type="submit">Save</button>
+            </form>
+    
+            <script src='@Url.Content("~/Scripts/TaskViewModel.js")' type="text/javascript"></script>
+        </div>
+    </body>
+</html>
